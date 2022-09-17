@@ -50,14 +50,14 @@ export default function Board() {
 
   function checkWinner(value) {
     return (
-      //horizontal check
+      //horizontal check - if one of the arrays consist of identical numbers
       isMarked.some(
         (arr) =>
           arr.every((e) => e === value) ||
-          //vertical check
-          isMarked.every((arr, i) => arr[0] === value) ||
-          isMarked.every((arr, i) => arr[1] === value) ||
-          isMarked.every((arr, i) => arr[2] === value) ||
+          //vertical check - if every array has an identical number at the same index
+          isMarked.every((arr) => arr[0] === value) ||
+          isMarked.every((arr) => arr[1] === value) ||
+          isMarked.every((arr) => arr[2] === value) ||
           //diagonal check
           (isMarked[0][0] === value &&
             isMarked[1][1] === value &&
