@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-function Field({ i1, i2, isMarked, handleClick }) {
-  console.log(isMarked);
+//Field
+function Field({ i1, i2, cell, handleClick }) {
   function displayMark() {
-    if (isMarked[i1][i2] === 1) {
+    if (cell === 1) {
       return <p>x</p>;
-    } else if (isMarked[i1][i2] === 2) {
+    } else if (cell === 2) {
       return <p>o</p>;
     }
   }
@@ -16,6 +16,7 @@ function Field({ i1, i2, isMarked, handleClick }) {
   );
 }
 
+//Board
 export default function Board() {
   const [isMarked, setIsMarked] = useState([
     [0, 0, 0],
@@ -31,8 +32,8 @@ export default function Board() {
   return (
     <div className="board">
       {isMarked.map((field, i1) =>
-        field.map((el, i2) => (
-          <Field i1={i1} i2={i2} isMarked={isMarked} handleClick={setMark} />
+        field.map((cell, i2) => (
+          <Field i1={i1} i2={i2} cell={cell} handleClick={setMark} />
         ))
       )}
     </div>

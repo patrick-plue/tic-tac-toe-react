@@ -21,7 +21,7 @@
 .field {
   width: 100px;
   height: 100px;
-  outline: 1px dashed lightsalmon;
+  outline: 1px solid lightsalmon;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,6 +29,6 @@
 }
 
 .field:hover {
-  outline: 2px solid lightcoral;
+  box-shadow: 0px 0px 10px 1px lightcoral inset;
   cursor: pointer;
 }
