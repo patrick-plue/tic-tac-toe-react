@@ -27,8 +27,21 @@ export default function Board() {
   function setMark(index1, index2) {
     const copyIsMarked = [...isMarked];
     copyIsMarked[index1][index2] = 1;
+    computerPlays(copyIsMarked);
     setIsMarked(copyIsMarked);
   }
+
+  function computerPlays(arr) {
+    const r1 = Math.floor(Math.random() * 3);
+    const r2 = Math.floor(Math.random() * 3);
+    if (arr[r1][r2] === 0 && arr[r1][r2] !== 1 && arr[r1][r2] !== 2) {
+      arr[r1][r2] = 2;
+    } else {
+      computerPlays(arr);
+    }
+    return arr;
+  }
+
   return (
     <div className="board">
       {isMarked.map((field, i1) =>
