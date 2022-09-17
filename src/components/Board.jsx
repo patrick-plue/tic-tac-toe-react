@@ -26,9 +26,14 @@ export default function Board() {
 
   function setMark(index1, index2) {
     const copyIsMarked = [...isMarked];
-    copyIsMarked[index1][index2] = 1;
-    computerPlays(copyIsMarked);
-    setIsMarked(copyIsMarked);
+    if (
+      copyIsMarked[index1][index2] !== 1 &&
+      copyIsMarked[index1][index2] !== 2
+    ) {
+      copyIsMarked[index1][index2] = 1;
+      computerPlays(copyIsMarked);
+      setIsMarked(copyIsMarked);
+    }
   }
 
   function computerPlays(arr) {
