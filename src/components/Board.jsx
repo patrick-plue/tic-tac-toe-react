@@ -82,7 +82,13 @@ export default function Board() {
     <div className="board">
       {isMarked.map((field, i1) =>
         field.map((cell, i2) => (
-          <Field i1={i1} i2={i2} cell={cell} handleClick={setMarks} />
+          <Field
+            key={crypto.randomUUID()}
+            i1={i1}
+            i2={i2}
+            cell={cell}
+            handleClick={setMarks}
+          />
         ))
       )}
     </div>
