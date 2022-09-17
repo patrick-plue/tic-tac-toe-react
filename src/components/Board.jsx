@@ -24,7 +24,10 @@ export default function Board() {
     [0, 0, 0],
   ]);
 
+  const [winner, setWinner] = useState('');
+
   function setMarks(index1, index2) {
+    if (winner) return;
     const copyIsMarked = [...isMarked];
     if (
       copyIsMarked[index1][index2] !== 1 &&
@@ -72,9 +75,9 @@ export default function Board() {
   useEffect(() => {
     //win logic
     if (checkWinner(1)) {
-      console.log('player win');
+      setWinner('player');
     } else if (checkWinner(2)) {
-      console.log('computer wins');
+      setWinner('computer');
     }
   }, [isMarked]);
 
@@ -91,6 +94,9 @@ export default function Board() {
           />
         ))
       )}
+      <div>
+        <p>And the winner is: {winner}</p>
+      </div>
     </div>
   );
 }
