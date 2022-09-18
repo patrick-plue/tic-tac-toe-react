@@ -91,6 +91,13 @@ export default function Board() {
     }
   };
 
+  const restart = () => {
+    const copyIsMarked = [...isMarked];
+    const resetArray = copyIsMarked.map((arr) => arr.map((el) => (el = 0)));
+    setIsMarked(resetArray);
+    setWinner('');
+  };
+
   return (
     <div className={notification()}>
       {isMarked.map((field, i1) =>
@@ -104,6 +111,9 @@ export default function Board() {
           />
         ))
       )}
+      <div className="restart">
+        <button onClick={restart}>Restart</button>
+      </div>
     </div>
   );
 }
