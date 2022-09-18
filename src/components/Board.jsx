@@ -81,8 +81,18 @@ export default function Board() {
     }
   }, [isMarked]);
 
+  const notification = () => {
+    if (winner === 'player') {
+      return 'board win';
+    } else if (winner === 'computer') {
+      return 'board loose';
+    } else {
+      return 'board';
+    }
+  };
+
   return (
-    <div className="board">
+    <div className={notification()}>
       {isMarked.map((field, i1) =>
         field.map((cell, i2) => (
           <Field
@@ -94,9 +104,6 @@ export default function Board() {
           />
         ))
       )}
-      <div>
-        <p>And the winner is: {winner}</p>
-      </div>
     </div>
   );
 }
