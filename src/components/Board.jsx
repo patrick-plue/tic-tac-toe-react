@@ -33,10 +33,15 @@ export default function Board() {
       copyIsMarked[index1][index2] !== 1 &&
       copyIsMarked[index1][index2] !== 2
     ) {
-      copyIsMarked[index1][index2] = 1;
+      playerPlays(copyIsMarked, index1, index2);
       computerPlays(copyIsMarked);
       setIsMarked(copyIsMarked);
     }
+  }
+
+  function playerPlays(arr, i1, i2) {
+    arr[i1][i2] = 1;
+    return arr;
   }
 
   function computerPlays(arr) {
