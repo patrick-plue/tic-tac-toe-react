@@ -32,3 +32,28 @@
   box-shadow: 0px 0px 10px 1px lightcoral inset;
   cursor: pointer;
 }
+
+.win {
+  outline: 5px solid green;
+}
+
+.loose {
+  outline: 5px solid red;
+}
+
+.restart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.restart > button {
+  padding: 1rem;
+  background-color: transparent;
+}
+
+.restart > button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 0px lightcoral;
+}

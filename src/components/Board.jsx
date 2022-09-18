@@ -33,17 +33,22 @@ export default function Board() {
       copyIsMarked[index1][index2] !== 1 &&
       copyIsMarked[index1][index2] !== 2
     ) {
-      copyIsMarked[index1][index2] = 1;
+      playerPlays(copyIsMarked, index1, index2);
       computerPlays(copyIsMarked);
       setIsMarked(copyIsMarked);
     }
   }
 
+  function playerPlays(arr, i1, i2) {
+    arr[i1][i2] = 1;
+    return arr;
+  }
+
   function computerPlays(arr) {
-    const round = arr.flat().filter((e) => e === 1 && 2).length;
+    const round = arr.flat().filter((e) => e === 1).length;
     const r1 = Math.floor(Math.random() * 3);
     const r2 = Math.floor(Math.random() * 3);
-    if (arr[r1][r2] === 0 && arr[r1][r2] !== 1 && arr[r1][r2] !== 2) {
+    if (arr[r1][r2] === 0) {
       arr[r1][r2] = 2;
     } else if (round <= 4) {
       computerPlays(arr);
@@ -81,8 +86,25 @@ export default function Board() {
     }
   }, [isMarked]);
 
+  const notification = () => {
+    if (winner === 'player') {
+      return 'board win';
+    } else if (winner === 'computer') {
+      return 'board loose';
+    } else {
+      return 'board';
+    }
+  };
+
+  const restart = () => {
+    const copyIsMarked = [...isMarked];
+    const resetArray = copyIsMarked.map((arr) => arr.map((el) => (el = 0)));
+    setIsMarked(resetArray);
+    setWinner('');
+  };
+
   return (
-    <div className="board">
+    <div className={notification()}>
       {isMarked.map((field, i1) =>
         field.map((cell, i2) => (
           <Field
@@ -94,8 +116,8 @@ export default function Board() {
           />
         ))
       )}
-      <div>
-        <p>And the winner is: {winner}</p>
+      <div className="restart">
+        <button onClick={restart}>Restart</button>
       </div>
     </div>
   );
