@@ -40,10 +40,10 @@ export default function Board() {
   }
 
   function computerPlays(arr) {
-    const round = arr.flat().filter((e) => e === 1 && 2).length;
+    const round = arr.flat().filter((e) => e === 1).length;
     const r1 = Math.floor(Math.random() * 3);
     const r2 = Math.floor(Math.random() * 3);
-    if (arr[r1][r2] === 0 && arr[r1][r2] !== 1 && arr[r1][r2] !== 2) {
+    if (arr[r1][r2] === 0) {
       arr[r1][r2] = 2;
     } else if (round <= 4) {
       computerPlays(arr);
